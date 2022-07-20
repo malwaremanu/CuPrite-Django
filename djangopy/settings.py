@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'masters',
     'PO',
     'HR',
-    'user_auth'
+    'user_auth',
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -92,14 +93,28 @@ DATABASES = {
     #     'PORT': os.environ["PGPORT"],
     # },
 
+    # CuPrite
+
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'railway',
+    #     'USER': 'root',
+    #     'PASSWORD': 'jkMWnTvSge0qkBlBsS3S',
+    #     'HOST': 'containers-us-west-85.railway.app',
+    #     'PORT': '6391',
+    # }
+
+    # Cuprite Added
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
-        'USER': 'root',
-        'PASSWORD': 'jkMWnTvSge0qkBlBsS3S',
-        'HOST': 'containers-us-west-85.railway.app',
-        'PORT': '6391',
+        'NAME': 'CuPrite',
+        'USER': 'CuPrite',
+        'PASSWORD': 'CuPrite@1234',
+        'HOST': 'n3plcpnl0101.prod.ams3.secureserver.net',
+        'PORT': '3306',
     }
+
 }
 
 APPEND_SLASH=False

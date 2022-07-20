@@ -15,6 +15,9 @@ class Party(models.Model):
     def __str__(self) -> str:
         return self.p_name
 
+    def __repr__(self) -> str:
+        return self.p_name +" : "+ self.p_email
+
     def show_all(self):
         return {
             "p_uuid" : self.p_uuid,

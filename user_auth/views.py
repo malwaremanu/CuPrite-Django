@@ -22,11 +22,16 @@ def login(request):
         ldb = [ x.strip().split(',') for x in load_db.readlines() ]
         
         check_db = [username, password]    
-        request.session['username'] = username
-        request.session['password'] = password
-            
+        
+        
+        if check_db in ldb:
+            request.session['username'] = username
+            msg = "Login Successfull"
+        else:
+            msg = "Wrong Username or Password"
+
         return JsonResponse({
-            "msg" : "Login Successfull" if check_db in ldb else "Wrong Username or Password"
+            "msg" :  msg
         })
 
     except:
@@ -37,8 +42,8 @@ def login(request):
 @csrf_exempt 
 def logout(request):
     try:
-        del request.session['username']
-        del request.session['password']
+        request.session.flush()
+        # del request.session['username']
     except:
         pass
     return JsonResponse({
@@ -47,7 +52,8 @@ def logout(request):
 
 @csrf_exempt 
 def status(request):
-    if request.session:
+    print(request.session)
+    if request.session.get('username', False):
         status = True
     else:
         status = False
