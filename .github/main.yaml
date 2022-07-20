@@ -11,7 +11,7 @@ jobs:
     - name: 📂 Sync files with Server
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: ftp.bhumimines.com
+        server: ${{ secrets.ftp_address }}
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
       
