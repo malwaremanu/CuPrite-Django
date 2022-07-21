@@ -53,6 +53,7 @@ def logout(request):
         pass
     return JsonResponse({
         "msg" : "user logged out"
+        "status" : "success"
     })
 
 @csrf_exempt 
