@@ -15,14 +15,14 @@ jobs:
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
       
-    - name: PIP Install & Restart
-      run: pip install -r requirements.txt
+    # - name: PIP Install & Restart
+    #   run: pip install -r requirements.txt
 
-    - name: Migrate Database
-      run: python3 manage.py makemigrations && python3 manage.py migrate
+    # - name: Migrate Database
+    #   run: python3 manage.py makemigrations && python3 manage.py migrate
 
-    - name: Restart Passenger Server
-      run: echo 'test\n' >> tmp/restart.txt
+    # - name: Restart Passenger Server
+    #   run: echo 'test\n' >> tmp/restart.txt
 
-    #- name: Restarting Passenger Server  
-    #  run: wget "https://erp.bhumimines.com/rs" && cat ./rs
+    - name: Restarting Passenger Server  
+      run: wget "https://bhumimines.com/cuprite/server_restart" && cat ./rs
