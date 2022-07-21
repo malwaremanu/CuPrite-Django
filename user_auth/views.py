@@ -40,7 +40,7 @@ def login(request):
 
     except:
         return JsonResponse({
-            "msg" : "did you forgot to send username or password ?"
+            "msg" : "did you forgot to send username or password ?",
             "status" : "error"
         })
 
@@ -52,7 +52,7 @@ def logout(request):
     except:
         pass
     return JsonResponse({
-        "msg" : "user logged out"
+        "msg" : "user logged out",
         "status" : "success"
     })
 
