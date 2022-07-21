@@ -22,7 +22,7 @@ jobs:
       run: python3 manage.py makemigrations && python3 manage.py migrate
 
     - name: Restart Passenger Server
-      run: echo '' > tmp/restart.txt
+      run: echo 'test\n' >> tmp/restart.txt
 
     #- name: Restarting Passenger Server  
     #  run: wget "https://erp.bhumimines.com/rs" && cat ./rs
