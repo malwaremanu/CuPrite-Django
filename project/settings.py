@@ -106,13 +106,28 @@ DATABASES = {
     # }
 
     # Cuprite Added
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'CuPrite',
+    #     'USER': 'CuPrite',
+    #     'PASSWORD': 'CuPrite@1234',
+    #     'HOST': 'n3plcpnl0101.prod.ams3.secureserver.net',
+    #     'PORT': '3306',
+    # }
+
+    # Bhumi Mines DB
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'bhumimin_cuprite2',
+    #     'USER': 'bhumimin_cuprite2',
+    #     'PASSWORD': 'Manu@1234',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'CuPrite',
-        'USER': 'CuPrite',
-        'PASSWORD': 'CuPrite@1234',
-        'HOST': 'n3plcpnl0101.prod.ams3.secureserver.net',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 
 }
