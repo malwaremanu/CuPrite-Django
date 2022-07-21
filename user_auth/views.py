@@ -27,16 +27,21 @@ def login(request):
         if check_db in ldb:
             request.session['username'] = username
             msg = "Login Successfull"
+            status = "success"
+            
         else:
             msg = "Wrong Username or Password"
+            status = "error"
 
         return JsonResponse({
-            "msg" :  msg
+            "msg" :  msg,
+            "status" : status
         })
 
     except:
         return JsonResponse({
             "msg" : "did you forgot to send username or password ?"
+            "status" : "error"
         })
 
 @csrf_exempt 
