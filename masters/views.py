@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from .models import Party
-import json
+import json, os
 from .serial import partySerial 
 
 from rest_framework.parsers import JSONParser
@@ -94,19 +94,6 @@ def party_detail(request, pk=None):
     """
     Retrieve, update or delete a party snippet.
     """
-    # try:
-    #     if pk !=None:
-    #         snippet = Party.objects.get(p_uuid=pk)
-    #     else:
-    #         snippet = Party.objects.create()
-    # except Party.DoesNotExist:
-    #     snippet = Party.objects.create()
-    #     #return HttpResponse(status=404)
-
-
-
-
-
     if request.method == 'GET':
         if pk:                
             try:
@@ -128,32 +115,20 @@ def party_detail(request, pk=None):
             return Response({"msg" : "UUID not found"})
 
     if request.method == 'POST':
+        os.system('clear')
         print('method POST')
-        snippet = Party.objects.create()
-        serializer = partySerial(snippet, data=request.data)
-        
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+        snippet = Party()
+        serializer = partySerial(snippet, data=request.data)        
+        print(serializer.is_valid())
+        print(serializer)
+        #if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
     
         return Response({
-            "msg" : "please send valid data",
-            "data" : [
-                'p_name',
-                'p_address',
-                'p_author',
-                'p_email',
-                'p_company',
-                'p_is_active'
-            ]
-            # {
-            #         "p_name": "",
-            #         "p_address": "",
-            #         "p_author": "",
-            #         "p_email": "hi@manupal.dev",
-            #         "p_company": "suryamines",
-            #         "p_is_active": true
-            #     }
+            "msg" : "please send valid data",   
+            "status" : "error",         
+            "my data" : request.data
         })
 
 
