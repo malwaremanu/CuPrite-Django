@@ -47,8 +47,16 @@ INSTALLED_APPS = [
     'HR',
     'user_auth',
     "rest_framework",
-     "corsheaders",
+    "corsheaders",     
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -85,6 +93,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+import environ
+env = environ.Env()
+environ.Env.read_env()
+
 DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -95,20 +107,20 @@ DATABASES = {
     #     'PORT': os.environ["PGPORT"],
     # },
 
-    # CuPrite    
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': os.environ['DB_NAME'],
-    #     'USER': os.environ['DB_USER'],
-    #     'PASSWORD': os.environ['DB_PASS'],
-    #     'HOST': os.environ['DB_HOST'],
-    #     'PORT': os.environ['DB_PORT'],
-    # }
-
+    #CuPrite    
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASS'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 
 }
 

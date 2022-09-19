@@ -23,5 +23,5 @@ urlpatterns = [
     path('hr/', include('HR.urls')),
     path('user/', include('user_auth.urls')),
     path('admin/', admin.site.urls),
-    path('server_restart', views.server_restart, name="server_restart"),
+    path('server_restart', views.server_restart, name="server_restart"),    
 ]

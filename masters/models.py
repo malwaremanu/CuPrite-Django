@@ -1,5 +1,6 @@
 from django.db import models
 import datetime, uuid
+from django.utils import timezone
 
 # Create your models here.
 class Party(models.Model): 
@@ -8,7 +9,7 @@ class Party(models.Model):
     p_address_1 = models.TextField(blank=True)
     p_address_2 = models.TextField(blank=True)
     p_author = models.CharField(max_length=100, default="System")
-    p_date = models.DateTimeField(default=datetime.datetime.now())
+    p_date = models.DateTimeField(default=timezone.now())
     
     p_id_rccm = models.CharField(max_length=100, blank=True)
     p_id_id = models.CharField(max_length=100, blank=True)
